@@ -1,0 +1,432 @@
+{
+  "@context": {
+    "@vocab": "https://openpermit.org/ontologies/openpermit#",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "spotsylvania": "https://www.spotsylvania.va.us/"
+  },
+  "@id": "spotsylvania:PermittingSchema",
+  "@type": "schema:DataFeed",
+  "dcterms:title": "Spotsylvania County Permitting Schema",
+  "dcterms:description": "Ontology of the Spotsylvania County, Virginia permitting schema derived from online research and permit documents.",
+  "schema:publisher": "spotsylvania:CountyOfSpotsylvania",
+  "schema:license": "schema:CreativeCommonsAttributionNonCommercialShareAlike",
+  "hasPermitType": [
+    {
+      "@id": "spotsylvania:ResidentialPermit",
+      "@type": "PermitType",
+      "dcterms:title": "Residential Permit",
+      "dcterms:description": "Permit for residential building, renovation, or accessory structures.",
+      "requiresDocument": [
+        "spotsylvania:ResidentialPermitApplication",
+        "spotsylvania:ContractorLicense",
+        "spotsylvania:TradesmanStatement",
+        "spotsylvania:LandownershipAffidavit",
+        "spotsylvania:LandownerRepresentativeAffidavit",
+        "spotsylvania:ProofOfOwnership",
+        "spotsylvania:ZoningOverlayComplianceForm",
+        "spotsylvania:WellAndDrainfieldAffidavit",
+        "spotsylvania:SitePlan",
+        "spotsylvania:BuildingPlans"
+      ],
+      "property": [
+        "spotsylvania:PropertyAddress",
+        "spotsylvania:Subdivision",
+        "spotsylvania:GatedCommunity",
+        "spotsylvania:GateCode",
+        "spotsylvania:ProjectDescription",
+        "spotsylvania:ProjectValue",
+        "spotsylvania:WaterSource",
+        "spotsylvania:SewerSource",
+        "spotsylvania:SquareFootage",
+        "spotsylvania:NumberOfStories",
+        "spotsylvania:NumberOfBedrooms",
+        "spotsylvania:NumberOfBathrooms",
+        "spotsylvania:BasementType",
+        "spotsylvania:FoundationType",
+        "spotsylvania:ExteriorWallType",
+        "spotsylvania:RoofingType",
+        "spotsylvania:HeatingFuel",
+        "spotsylvania:AirConditioning",
+        "spotsylvania:HomeOccupation"
+      ]
+    },
+    {
+      "@id": "spotsylvania:CommercialPermit",
+      "@type": "PermitType",
+      "dcterms:title": "Commercial Permit",
+      "dcterms:description": "Permit for commercial building, renovation, or accessory structures.",
+      "requiresDocument": [
+        "spotsylvania:CommercialPermitApplication",
+        "spotsylvania:ContractorLicense",
+        "spotsylvania:TradesmanStatement",
+        "spotsylvania:LandownershipAffidavit",
+        "spotsylvania:LandownerRepresentativeAffidavit",
+        "spotsylvania:ProofOfOwnership",
+        "spotsylvania:ZoningDocuments",
+        "spotsylvania:SitePlan",
+        "spotsylvania:BuildingPlans",
+        "spotsylvania:ConstructionDocuments",
+        "spotsylvania:GeotechnicalReport",
+        "spotsylvania:StatementOfSpecialInspections",
+        "spotsylvania:StructuralAnalysis",
+        "spotsylvania:TrussLayout",
+        "spotsylvania:TrussDiagrams",
+        "spotsylvania:HealthDepartmentDocuments",
+        "spotsylvania:EnergyEvaluations",
+        "spotsylvania:AsbestosCertification"
+      ],
+      "property": [
+        "spotsylvania:PropertyAddress",
+        "spotsylvania:Subdivision",
+        "spotsylvania:ProjectDescription",
+        "spotsylvania:ProjectValue",
+        "spotsylvania:WaterSource",
+        "spotsylvania:SewerSource",
+        "spotsylvania:SquareFootage",
+        "spotsylvania:CurrentUse",
+        "spotsylvania:ProposedUse",
+        "spotsylvania:UseGroup",
+        "spotsylvania:ConstructionType",
+        "spotsylvania:ExteriorWallType",
+        "spotsylvania:FoundationType",
+        "spotsylvania:RoofingType",
+        "spotsylvania:NumberOfStories",
+        "spotsylvania:NumberOfFullBaths",
+        "spotsylvania:NumberOfHalfBaths",
+        "spotsylvania:NumberOfBedrooms",
+        "spotsylvania:FuelType",
+        "spotsylvania:AirConditioning"
+      ]
+    },
+    {
+      "@id": "spotsylvania:OverTheCounterPermit",
+      "@type": "PermitType",
+      "dcterms:title": "Over-the-Counter Permit",
+      "dcterms:description": "Simplified permit for specific minor residential projects.",
+      "requiresDocument": [
+        "spotsylvania:ResidentialPermitApplication",
+        "spotsylvania:ContractorLicense",
+        "spotsylvania:TradesmanStatement",
+        "spotsylvania:LandownershipAffidavit",
+        "spotsylvania:ProofOfOwnership",
+        "spotsylvania:ZoningOverlayComplianceForm",
+        "spotsylvania:WellAndDrainfieldAffidavit"
+      ],
+      "property": [
+        "spotsylvania:PropertyAddress",
+        "spotsylvania:ProjectDescription",
+        "spotsylvania:ProjectValue"
+      ]
+    },
+    {
+      "@id": "spotsylvania:IndividualPermitForms",
+      "@type": "PermitType",
+      "dcterms:title": "Individual Permit Forms",
+      "dcterms:description": "Individual forms for specific permitting needs.",
+      "requiresDocument": [
+        "spotsylvania:HomeBusinessQuestionnaire",
+        "spotsylvania:InformationRequestForm",
+        "spotsylvania:LandownershipAffidavitForm",
+        "spotsylvania:LandownerRepresentativeAffidavitForm",
+        "spotsylvania:PermitExtensionRequestForm",
+        "spotsylvania:PoolAndFenceAffidavit",
+        "spotsylvania:RequestForResidentialTemporaryFinalErosionVariance"
+      ]
+    }
+  ],
+  "hasDocumentType": [
+    {
+      "@id": "spotsylvania:ResidentialPermitApplication",
+      "@type": "DocumentType",
+      "dcterms:title": "Residential Permit Application",
+      "dcterms:description": "Application form for residential permits."
+    },
+    {
+      "@id": "spotsylvania:CommercialPermitApplication",
+      "@type": "DocumentType",
+      "dcterms:title": "Commercial Permit Application",
+      "dcterms:description": "Application form for commercial permits."
+    },
+    {
+      "@id": "spotsylvania:ContractorLicense",
+      "@type": "DocumentType",
+      "dcterms:title": "Contractor License",
+      "dcterms:description": "Virginia State Contractor's License."
+    },
+    {
+      "@id": "spotsylvania:TradesmanStatement",
+      "@type": "DocumentType",
+      "dcterms:title": "Tradesman Statement",
+      "dcterms:description": "Statements from licensed tradesmen (electrical, plumbing, HVAC)."
+    },
+    {
+      "@id": "spotsylvania:LandownershipAffidavit",
+      "@type": "DocumentType",
+      "dcterms:title": "Landownership Affidavit",
+      "dcterms:description": "Affidavit confirming land ownership when the owner is performing the work."
+    },
+    {
+      "@id": "spotsylvania:LandownerRepresentativeAffidavit",
+      "@type": "DocumentType",
+      "dcterms:title": "Landowner Representative Affidavit",
+      "dcterms:description": "Affidavit authorizing a representative to act on behalf of the landowner."
+    },
+    {
+      "@id": "spotsylvania:ProofOfOwnership",
+      "@type": "DocumentType",
+      "dcterms:title": "Proof of Ownership",
+      "dcterms:description": "Document verifying property ownership."
+    },
+    {
+      "@id": "spotsylvania:ZoningOverlayComplianceForm",
+      "@type": "DocumentType",
+      "dcterms:title": "Zoning Overlay Compliance Form",
+      "dcterms:description": "Form ensuring compliance with zoning overlay requirements."
+    },
+    {
+      "@id": "spotsylvania:WellAndDrainfieldAffidavit",
+      "@type": "DocumentType",
+      "dcterms:title": "Well and Drainfield Affidavit",
+      "dcterms:description": "Affidavit related to well and septic systems."
+    },
+    {
+      "@id": "spotsylvania:SitePlan",
+      "@type": "DocumentType",
+      "dcterms:title": "Site Plan",
+      "dcterms:description": "Plan showing the layout of the property and proposed development."
+    },
+    {
+      "@id": "spotsylvania:BuildingPlans",
+      "@type": "DocumentType",
+      "dcterms:title": "Building Plans",
+      "dcterms:description": "Detailed architectural and structural plans."
+    },
+    {
+      "@id": "spotsylvania:ZoningDocuments",
+      "@type": "DocumentType",
+      "dcterms:title": "Zoning Documents",
+      "dcterms:description": "Documents related to zoning compliance."
+    },
+    {
+      "@id": "spotsylvania:ConstructionDocuments",
+      "@type": "DocumentType",
+      "dcterms:title": "Construction Documents",
+      "dcterms:description": "Additional documents required for construction."
+    },
+    {
+      "@id": "spotsylvania:GeotechnicalReport",
+      "@type": "DocumentType",
+      "dcterms:title": "Geotechnical Investigation/Soils Report",
+      "dcterms:description": "Report on soil conditions."
+    },
+    {
+      "@id": "spotsylvania:StatementOfSpecialInspections",
+      "@type": "DocumentType",
+      "dcterms:title": "Statement of Special Inspections",
+      "dcterms:description": "Statement outlining required special inspections."
+    },
+    {
+      "@id": "spotsylvania:StructuralAnalysis",
+      "@type": "DocumentType",
+      "dcterms:title": "Structural Analysis",
+      "dcterms:description": "Analysis of structural loads."
+    },
+    {
+      "@id": "spotsylvania:TrussLayout",
+      "@type": "DocumentType",
+      "dcterms:title": "Manufacturer's Truss Layout",
+      "dcterms:description": "Layout of manufactured trusses."
+    },
+    {
+      "@id": "spotsylvania:TrussDiagrams",
+      "@type": "DocumentType",
+      "dcterms:title": "Engineered Truss Diagrams",
+      "dcterms:description": "Engineering diagrams for trusses."
+    },
+    {
+      "@id": "spotsylvania:HealthDepartmentDocuments",
+      "@type": "DocumentType",
+      "dcterms:title": "Health Department Documents",
+      "dcterms:description": "Documents from the Health Department (if applicable)."
+    },
+    {
+      "@id": "spotsylvania:EnergyEvaluations",
+      "@type": "DocumentType",
+      "dcterms:title": "Energy Evaluations",
+      "dcterms:description": "Documents related to energy efficiency."
+    },
+    {
+      "@id": "spotsylvania:AsbestosCertification",
+      "@type": "DocumentType",
+      "dcterms:title": "Asbestos Certification Form",
+      "dcterms:description": "Form certifying the absence of asbestos."
+    },
+    {
+      "@id": "spotsylvania:HomeBusinessQuestionnaire",
+      "@type": "DocumentType",
+      "dcterms:title": "Home Business Questionnaire",
+      "dcterms:description": "Questionnaire for home business permits."
+    },
+    {
+      "@id": "spotsylvania:InformationRequestForm",
+      "@type": "DocumentType",
+      "dcterms:title": "Information Request Form",
+      "dcterms:description": "Form to request information from the county."
+    },
+    {
+      "@id": "spotsylvania:LandownershipAffidavitForm",
+      "@type": "DocumentType",
+      "dcterms:title": "Landownership Affidavit Form",
+      "dcterms:description": "Form for the landownership affidavit."
+    },
+    {
+      "@id": "spotsylvania:LandownerRepresentativeAffidavitForm",
+      "@type": "DocumentType",
+      "dcterms:title": "Landowner Representative Affidavit Form",
+      "dcterms:description": "Form for the landowner representative affidavit."
+    },
+    {
+      "@id": "spotsylvania:PermitExtensionRequestForm",
+      "@type": "DocumentType",
+      "dcterms:title": "Permit Extension Request Form",
+      "dcterms:description": "Form to request an extension for a permit."
+    },
+    {
+      "@id": "spotsylvania:PoolAndFenceAffidavit",
+      "@type": "DocumentType",
+      "dcterms:title": "Pool and Fence Affidavit",
+      "dcterms:description": "Affidavit related to pool and fence permits."
+    },
+    {
+      "@id": "spotsylvania:RequestForResidentialTemporaryFinalErosionVariance",
+      "@type": "DocumentType",
+      "dcterms:title": "Request for a Residential Temporary Final Erosion Variance",
+      "dcterms:description": "Form to request a temporary variance for erosion control."
+    }
+  ],
+  "hasPropertyType": [
+    {
+      "@id": "spotsylvania:PropertyAddress",
+      "@type": "PropertyType",
+      "dcterms:title": "Property Address",
+      "schema:domainIncludes": [
+        "spotsylvania:ResidentialPermit",
+        "spotsylvania:CommercialPermit",
+        "spotsylvania:OverTheCounterPermit"
+      ],
+      "schema:rangeIncludes": "schema:PostalAddress"
+    },
+    {
+      "@id": "spotsylvania:Subdivision",
+      "@type": "PropertyType",
+      "dcterms:title": "Subdivision",
+      "schema:domainIncludes": [
+        "spotsylvania:ResidentialPermit",
+        "spotsylvania:CommercialPermit"
+      ],
+      "schema:rangeIncludes": "schema:Text"
+    },
+    {
+      "@id": "spotsylvania:GatedCommunity",
+      "@type": "PropertyType",
+      "dcterms:title": "Gated Community",
+      "schema:domainIncludes": [
+        "spotsylvania:ResidentialPermit"
+      ],
+      "schema:rangeIncludes": "schema:Boolean"
+    },
+    {
+      "@id": "spotsylvania:GateCode",
+      "@type": "PropertyType",
+      "dcterms:title": "Gate Code",
+      "schema:domainIncludes": [
+        "spotsylvania:ResidentialPermit"
+      ],
+      "schema:rangeIncludes": "schema:Text"
+    },
+    {
+      "@id": "spotsylvania:ProjectDescription",
+      "@type": "PropertyType",
+      "dcterms:title": "Project Description",
+      "schema:domainIncludes": [
+        "spotsylvania:ResidentialPermit",
+        "spotsylvania:CommercialPermit",
+        "spotsylvania:OverTheCounterPermit"
+      ],
+      "schema:rangeIncludes": "schema:Text"
+    },
+    {
+      "@id": "spotsylvania:ProjectValue",
+      "@type": "PropertyType",
+      "dcterms:title": "Project Value",
+      "schema:domainIncludes": [
+        "spotsylvania:ResidentialPermit",
+        "spotsylvania:CommercialPermit",
+        "spotsylvania:OverTheCounterPermit"
+      ],
+      "schema:rangeIncludes": "schema:Number"
+    },
+    {
+      "@id": "spotsylvania:WaterSource",
+      "@type": "PropertyType",
+      "dcterms:title": "Water Source",
+      "schema:domainIncludes": [
+        "spotsylvania:ResidentialPermit",
+        "spotsylvania:CommercialPermit"
+      ],
+      "schema:rangeIncludes": "schema:Text"
+    },
+    {
+      "@id": "spotsylvania:SewerSource",
+      "@type": "PropertyType",
+      "dcterms:title": "Sewer Source",
+      "schema:domainIncludes": [
+        "spotsylvania:ResidentialPermit",
+        "spotsylvania:CommercialPermit"
+      ],
+      "schema:rangeIncludes": "schema:Text"
+    },
+    {
+      "@id": "spotsylvania:SquareFootage",
+      "@type": "PropertyType",
+      "dcterms:title": "Square Footage",
+      "schema:domainIncludes": [
+        "spotsylvania:ResidentialPermit",
+        "spotsylvania:CommercialPermit"
+      ],
+      "schema:rangeIncludes": "schema:Number"
+    },
+    {
+      "@id": "spotsylvania:NumberOfStories",
+      "@type": "PropertyType",
+      "dcterms:title": "Number of Stories",
+      "schema:domainIncludes": [
+        "spotsylvania:ResidentialPermit",
+        "spotsylvania:CommercialPermit"
+      ],
+      "schema:rangeIncludes": "schema:Integer"
+    },
+    {
+      "@id": "spotsylvania:NumberOfBedrooms",
+      "@type": "PropertyType",
+      "dcterms:title": "Number of Bedrooms",
+      "schema:domainIncludes": [
+        "spotsylvania:ResidentialPermit",
+        "spotsylvania:CommercialPermit"
+      ],
+      "schema:rangeIncludes": "schema:Integer"
+    },
+    {
+      "@id": "spotsylvania:NumberOfBathrooms",
+      "@type": "PropertyType",
+      "dcterms:title": "Number of Bathrooms",
+      "schema:domainIncludes": [
+        "spotsylvania:ResidentialPermit"
+      ],
+      "schema:rangeIncludes": "schema:Number"
+    },
+    {
+      "@id": "spotsylvania:BasementType",
+      "@type": "PropertyType",
+      "dcterms:
