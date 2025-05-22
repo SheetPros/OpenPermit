@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OpenPermit Data Relationships</title>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>mermaid.initialize({ startOnLoad: true });</script>
+</head>
+<body>
+  <h1>Data Formats and Relationships</h1>
+  <p>The diagram below visualizes how OpenPermit node objects relate to project documents.</p>
+  <div class="mermaid">
+    graph TD
+      Project -->|contains| Document
+      Document -->|typed as| JSONDocument
+      Document -->|typed as| CSVDocument
+      Document -->|typed as| PDFDocument
+      Document -->|typed as| DWGDocument
+      Document -->|typed as| DXFDocument
+      Document -->|references| RequirementNode
+      RequirementNode -->|requires| ComponentNode
+  </div>
+</body>
+</html>
