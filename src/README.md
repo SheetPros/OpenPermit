@@ -105,6 +105,16 @@ Execute the JavaScript unit tests with:
 npm test
 ```
 
+### Development Scripts
+
+Common helper commands are defined in `package.json`:
+
+```bash
+npm run build   # build the library
+npm run lint    # lint source code
+npm run serve   # start the demo server
+```
+
 ## Contributing
 
 Contributions are welcome! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.

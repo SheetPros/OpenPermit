@@ -3,6 +3,9 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![CI](https://github.com/builtbycorelot/OpenPermit/actions/workflows/ci.yml/badge.svg)](./.github/workflows/ci.yml)
+[![Coverage](https://codecov.io/gh/builtbycorelot/OpenPermit/branch/main/graph/badge.svg)](https://codecov.io/gh/builtbycorelot/OpenPermit)
+[![Docs](https://img.shields.io/badge/docs-website-blue.svg)](https://builtbycorelot.github.io/OpenPermit)
+[![Build Status](https://github.com/builtbycorelot/OpenPermit/actions/workflows/ci.yml/badge.svg)](https://github.com/builtbycorelot/OpenPermit/actions/workflows/ci.yml)
 
 **Public demo →** <https://builtbycorelot.github.io/OpenPermit>
 
@@ -37,11 +40,27 @@ OpenPermit is an **open-source data layer and toolkit** that modernises construc
 ```bash
 git clone https://github.com/builtbycorelot/OpenPermit.git
 cd OpenPermit
-pip install -r requirements-dev.txt
+npm install                             # install JS dependencies
+npm run build
+npm test                                # run unit tests
+npm run lint
+npm run serve
+
+
+pip install -r requirements.txt
 pytest                                 # run unit tests
 python scripts/niem6_build_schemas.py  # generate NIEM-6.0 JSON Schemas
 python workflow/validate_workflow.py   # sample workflow validation
+npx playwright install                # install browsers for E2E tests
+npx playwright test                   # run E2E suite
+
+
+
 ```
+
+The helper scripts rely on Python packages listed in
+[`requirements.txt`](requirements.txt). Install them with the `pip` command
+shown above before running the scripts.
 
 ---
 
