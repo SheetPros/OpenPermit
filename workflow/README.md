@@ -15,7 +15,7 @@ Each step corresponds to entities in `ontology`:
 - `Inspection` tracks field verification events linked back to a permit.
 
 ## Extending the JSON-LD
-1. Open the file [`ontology`](../ontology) to see the existing class structure.
+1. Open the file [`ontology.json`](../ontology.json) to see the existing class structure.
 2. Add new properties under the relevant class.
 3. If new relationships are needed, append them in the `relationships` list.
 4. Validate your JSON‑LD with tools in `open-data-layer/schema/` (e.g., `validate_schema.py`).

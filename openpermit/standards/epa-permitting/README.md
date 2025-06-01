@@ -17,10 +17,15 @@ Each schema preserves the original EPA field names via the `epaTag` property to 
 
 ## Conversion Example
 
-The example below illustrates a very simple transformation from EPA XML to NFL JSON using the importer script in `agent/epa_importer.py`.
+The example below illustrates a very simple transformation from EPA XML to NFL JSON-LD using the importer script in `agent/epa_importer.py`.
+
+Run the command below from the repository root to transform the included sample
+permit:
 
 ```bash
-python agent/epa_importer.py examples/sample_permit.xml > permit.json
+python agent/epa_importer.py openpermit/standards/epa-permitting/examples/sample_permit.xml > permit.json
 ```
 
-The resulting JSON document conforms to the schemas in this directory.
+The resulting JSON-LD document includes an `@context` referencing
+`https://openpermit.org/schemas/nfl/v1` and `@id` fields when identifiers
+are present. It conforms to the schemas in this directory.

@@ -22,3 +22,11 @@ example `rdfpipe` from rdflib:
 rdfpipe --input-format turtle ../ontology/open_data_ontology.owl \
     --query ../ontology/queries.sparql
 ```
+
+To generate the ontology in JSON-LD instead of Turtle, pass the `--format jsonld`
+flag and specify a target filename:
+
+```bash
+python ../ontology/generate_ontology.py --format jsonld \
+    ../ontology/open_data_ontology.jsonld
+```

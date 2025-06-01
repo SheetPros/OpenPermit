@@ -1,0 +1,8 @@
+{
+  "@context": {
+    "@vocab": "https://www.iso20022.org/",
+    "schema": "https://schema.org/"
+  },
+  "amount": "100.00",
+  "currency": "USD"
+}

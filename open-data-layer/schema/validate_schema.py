@@ -53,7 +53,7 @@ except Exception:  # jsonschema not installed
                     validate(item, item_schema, _key=f"{_key}[{idx}]")
 
 SCHEMAS = {
-    "blds.json": {
+    "blds.jsonld": {
         "type": "object",
         "properties": {
             "id": {"type": "string"},
@@ -62,7 +62,7 @@ SCHEMAS = {
         },
         "required": ["id", "status", "submittedDate"]
     },
-    "ifc.json": {
+    "ifc.jsonld": {
         "type": "object",
         "properties": {
             "ifcVersion": {"type": "string"},
@@ -96,7 +96,7 @@ SCHEMAS = {
         },
         "required": ["type", "geometry", "properties"]
     },
-    "iso20022.json": {
+    "iso20022.jsonld": {
         "type": "object",
         "properties": {
             "amount": {"type": "string"},
@@ -114,6 +114,8 @@ def main():
         path = os.path.join(base_dir, fname)
         with open(path) as f:
             data = json.load(f)
+        if isinstance(data, dict) and "@context" in data:
+            data = {k: v for k, v in data.items() if k != "@context"}
         try:
             validate(data, schema)
             print(f"{fname}: VALID")

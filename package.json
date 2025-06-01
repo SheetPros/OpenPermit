@@ -1,7 +1,17 @@
 {
   "name": "openpermit",
   "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "node --test test/apiClient.test.js"
+    "build": "mkdir -p dist && cp -r src/* dist/",
+    "test": "node --test",
+    "lint": "eslint src test",
+    "serve": "http-server example"
+  },
+  "devDependencies": {
+    "eslint": "^8.52.0",
+    "prettier": "^3.1.0",
+    "playwright": "^1.39.0",
+    "http-server": "^14.1.1"
   }
 }

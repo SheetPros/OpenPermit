@@ -1,6 +1,7 @@
 node_modules/
+coverage/
 dist/
 __pycache__/
-*.py[cod]
+*.pyc
 *.log
 

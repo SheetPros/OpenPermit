@@ -71,26 +71,36 @@ def parse_xml(path):
     return data
 
 def convert_to_nfl(data):
-    """Convert parsed data into a minimal NFL structure."""
+    """Convert parsed data into a minimal NFL JSON-LD structure."""
 
-    nodes = [
-        {
-            "type": "permit.core",
-            "data": {
-                "identifier": data.get("identifier"),
-                "name": data.get("name"),
-                "program": data.get("program"),
-                "type": data.get("type"),
-                "epaTag": "PermitIdentification",
-            },
-        }
-    ]
+    permit_node = {
+        "type": "permit.core",
+        "data": {
+            "identifier": data.get("identifier"),
+            "name": data.get("name"),
+            "program": data.get("program"),
+            "type": data.get("type"),
+            "epaTag": "PermitIdentification",
+        },
+    }
+
+    identifier = data.get("identifier")
+    if identifier:
+        permit_node["@id"] = f"urn:openpermit:permit:{identifier}"
+
+    nodes = [permit_node]
 
     admin = data.get("admin")
     if admin:
-        nodes.append({"type": "permit.admin", "data": admin})
+        admin_node = {"type": "permit.admin", "data": admin}
+        if identifier:
+            admin_node["@id"] = f"urn:openpermit:permit:{identifier}#administration"
+        nodes.append(admin_node)
 
-    return {"nodes": nodes}
+    return {
+        "@context": "https://openpermit.org/schemas/nfl/v1",
+        "nodes": nodes,
+    }
 
 def main():
     if len(sys.argv) != 2:

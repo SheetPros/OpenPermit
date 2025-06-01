@@ -1,6 +1,0 @@
-{
-  "ifcVersion": "IFC4",
-  "entities": [
-    {"type": "IfcWall", "id": "W1"}
-  ]
-}
