@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenPermit — The Open Standard for Construction Permitting</title>
+    <meta name="description" content="One standard for every permit. An open specification that makes construction permitting work the same way everywhere.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #1a1a2e;
+            --slate: #4a5568;
+            --mist: #718096;
+            --cloud: #e2e8f0;
+            --snow: #f7fafc;
+            --white: #ffffff;
+            --accent: #2563eb;
+            --accent-light: #3b82f6;
+            --success: #059669;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
+            background: var(--snow);
+            color: var(--ink);
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            color: var(--slate);
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid var(--cloud);
+            padding: 1rem 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--ink);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-mark {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--slate);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .btn {
+            padding: 0.875rem 1.75rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-light);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--ink);
+            border: 1px solid var(--cloud);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-nav {
+            padding: 0.5rem 1rem;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 5rem 0 4rem;
+            text-align: center;
+            background: linear-gradient(180deg, var(--white) 0%, var(--snow) 100%);
+        }
+
+        .hero h1 {
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--mist);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Stats */
+        .stats {
+            padding: 4rem 0;
+            background: var(--white);
+            border-top: 1px solid var(--cloud);
+            border-bottom: 1px solid var(--cloud);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat {
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--mist);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Capabilities */
+        .capabilities {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header p {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .capability-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .capability-card {
+            background: var(--white);
+            border: 1px solid var(--cloud);
+            border-radius: 12px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 64px 1fr;
+            gap: 1.5rem;
+            align-items: start;
+            transition: all 0.2s;
+        }
+
+        .capability-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 4px 20px rgba(37, 99, 235, 0.1);
+        }
+
+        .capability-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--snow);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+        }
+
+        .capability-content h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .capability-content p {
+            font-size: 0.95rem;
+        }
+
+        /* How It Works */
+        .how-it-works {
+            padding: 5rem 0;
+            background: var(--white);
+            border-top: 1px solid var(--cloud);
+        }
+
+        .workflow {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .workflow-step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+            padding-bottom: 0.5rem;
+        }
+
+        .step-content h3 {
+            font-size: 1.125rem;
+            margin-bottom: 0.375rem;
+        }
+
+        .step-content p {
+            font-size: 0.95rem;
+        }
+
+        .workflow-connector {
+            width: 2px;
+            height: 32px;
+            background: var(--cloud);
+            margin-left: 23px;
+        }
+
+        /* Who It's For */
+        .audience {
+            padding: 5rem 0;
+            background: var(--ink);
+            color: var(--white);
+        }
+
+        .audience h2 {
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .audience .section-subtitle {
+            color: var(--mist);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .audience-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .audience-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .audience-card h3 {
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .audience-card p {
+            color: var(--mist);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 5rem 0;
+            background: var(--snow);
+            border-top: 1px solid var(--cloud);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            max-width: 500px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            background: var(--white);
+            border-top: 1px solid var(--cloud);
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: var(--slate);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+        }
+
+        .footer-note {
+            font-size: 0.85rem;
+            color: var(--mist);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+
+            .stats-grid,
+            .audience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .capability-card {
+                grid-template-columns: 1fr;
+            }
+
+            .capability-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav class="container">
+        <a href="#" class="logo">
+            <div class="logo-mark">OP</div>
+            OpenPermit
+        </a>
+        <ul class="nav-links">
+            <li><a href="#capabilities">What It Does</a></li>
+            <li><a href="#how-it-works">How It Works</a></li>
+            <li><a href="#who-its-for">Who It's For</a></li>
+            <li><a href="https://github.com/SheetPros/OpenPermit" target="_blank" rel="noopener" class="btn btn-primary btn-nav">View on GitHub</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>One Standard.<br>Every Permit.</h1>
+        <p class="hero-subtitle">
+            An open specification that makes construction permitting work the same way everywhere—whether you're a builder in Virginia or a software vendor in Texas.
+        </p>
+        <div class="hero-cta">
+            <a href="https://github.com/SheetPros/OpenPermit" target="_blank" rel="noopener" class="btn btn-primary">View the Specification</a>
+            <a href="#how-it-works" class="btn btn-secondary">See How It Works</a>
+        </div>
+    </div>
+</section>
+
+<section class="stats">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat">
+                <div class="stat-number">39,000+</div>
+                <div class="stat-label">Jurisdictions in the U.S.</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">120</div>
+                <div class="stat-label">Days avg. permit timeline</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">$0</div>
+                <div class="stat-label">Cost to adopt the standard</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="capabilities" id="capabilities">
+    <div class="container">
+        <div class="section-header">
+            <h2>What OpenPermit Does</h2>
+            <p>OpenPermit is not software—it's a specification that any system can implement. Here's what it enables.</p>
+        </div>
+
+        <div class="capability-grid">
+            <div class="capability-card">
+                <div class="capability-icon">📋</div>
+                <div class="capability-content">
+                    <h3>Universal Application Form</h3>
+                    <p>A single permit application that works everywhere. Whether you're applying online, through software, or on paper—the same questions, the same format, every time.</p>
+                </div>
+            </div>
+
+            <div class="capability-card">
+                <div class="capability-icon">🔌</div>
+                <div class="capability-content">
+                    <h3>Software Integration</h3>
+                    <p>Software companies can build once and connect everywhere. Jurisdictions get better tools without being locked into a single vendor.</p>
+                </div>
+            </div>
+
+            <div class="capability-card">
+                <div class="capability-icon">✅</div>
+                <div class="capability-content">
+                    <h3>Automatic Validation</h3>
+                    <p>Simple, code-compliant projects can be checked automatically—like filing taxes online. Reviewers focus their time on complex cases that need human judgment.</p>
+                </div>
+            </div>
+
+            <div class="capability-card">
+                <div class="capability-icon">💬</div>
+                <div class="capability-content">
+                    <h3>Clear Communication</h3>
+                    <p>Messages, comments, and status updates flow through one channel. No more hunting through email threads to find what a reviewer asked for.</p>
+                </div>
+            </div>
+
+            <div class="capability-card">
+                <div class="capability-icon">📊</div>
+                <div class="capability-content">
+                    <h3>Complete Records</h3>
+                    <p>Every submission, review, and inspection is recorded in a single, searchable history. Audits become simple. Nothing gets lost.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="how-it-works" id="how-it-works">
+    <div class="container">
+        <div class="section-header">
+            <h2>How It Works</h2>
+            <p>From application to certificate of occupancy—one connected process.</p>
+        </div>
+
+        <div class="workflow">
+            <div class="workflow-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Apply</h3>
+                    <p>Fill out the standard application form. Same questions whether you're online, using software, or submitting on paper.</p>
+                </div>
+            </div>
+
+            <div class="workflow-connector"></div>
+
+            <div class="workflow-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Check</h3>
+                    <p>Your application is automatically checked for completeness. Simple projects that meet code can be fast-tracked.</p>
+                </div>
+            </div>
+
+            <div class="workflow-connector"></div>
+
+            <div class="workflow-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Review</h3>
+                    <p>Reviewers look at your plans. If they have questions, you'll get a clear message—not a confusing email chain.</p>
+                </div>
+            </div>
+
+            <div class="workflow-connector"></div>
+
+            <div class="workflow-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Permit Issued</h3>
+                    <p>Once approved, your permit is issued. Everyone who needs to know—you, your contractor, the inspector—gets notified.</p>
+                </div>
+            </div>
+
+            <div class="workflow-connector"></div>
+
+            <div class="workflow-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Inspect</h3>
+                    <p>Request inspections as your project progresses. Results are logged with photos and timestamps—no paperwork to chase.</p>
+                </div>
+            </div>
+
+            <div class="workflow-connector"></div>
+
+            <div class="workflow-step">
+                <div class="step-number">6</div>
+                <div class="step-content">
+                    <h3>Complete</h3>
+                    <p>All inspections pass, certificate of occupancy issued. The entire history lives in one place, ready if you ever need it.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="audience" id="who-its-for">
+    <div class="container">
+        <h2>Who It's For</h2>
+        <p class="section-subtitle">OpenPermit helps everyone involved in the permitting process.</p>
+
+        <div class="audience-grid">
+            <div class="audience-card">
+                <div class="audience-icon">🏗️</div>
+                <h3>Builders & Contractors</h3>
+                <p>Apply the same way everywhere. No more learning a new system for every jurisdiction. Track your permits in one place.</p>
+            </div>
+
+            <div class="audience-card">
+                <div class="audience-icon">🏛️</div>
+                <h3>Local Governments</h3>
+                <p>Adopt modern tools without expensive custom development. Process permits faster. Give residents a better experience.</p>
+            </div>
+
+            <div class="audience-card">
+                <div class="audience-icon">💻</div>
+                <h3>Software Companies</h3>
+                <p>Build once, deploy everywhere. Connect to any jurisdiction that supports the standard. No more one-off integrations.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container">
+        <h2>Ready to Learn More?</h2>
+        <p>OpenPermit is open source and free to use. Read the full specification on GitHub.</p>
+        <a href="https://github.com/SheetPros/OpenPermit" target="_blank" rel="noopener" class="btn btn-primary">View on GitHub</a>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-links">
+            <a href="https://github.com/SheetPros/OpenPermit" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://github.com/SheetPros/OpenPermit/issues" target="_blank" rel="noopener">Report an Issue</a>
+        </div>
+        <p class="footer-note">OpenPermit is an open standard. No license fees. No vendor lock-in.</p>
+    </div>
+</footer>
+
+</body>
+</html>

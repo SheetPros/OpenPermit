@@ -1,9 +1,0 @@
-{
-  "@context": {
-    "@vocab": "https://permitdata.org/ns#",
-    "schema": "https://schema.org/"
-  },
-  "id": "PERMIT-001",
-  "status": "submitted",
-  "submittedDate": "2024-01-01"
-}

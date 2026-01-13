@@ -1,7 +1,2 @@
-node_modules/
-coverage/
-dist/
-__pycache__/
-*.pyc
-*.log
-
+# Local development files
+local/
